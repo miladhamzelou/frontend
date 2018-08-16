@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import FineUploaderTraditional from 'fine-uploader-wrappers';
 import Gallery from 'react-fine-uploader';
 import { serverBaseURL } from 'libs/Utils';
-
-// ...or load this specific CSS file using a <link> tag in your document
 import 'react-fine-uploader/gallery/gallery.css';
 
 const uploader = new FineUploaderTraditional({
@@ -14,15 +12,19 @@ const uploader = new FineUploaderTraditional({
     },
     deleteFile: {
       enabled: false,
-      endpoint: '/uploads',
     },
     request: {
       endpoint: `${serverBaseURL}/media`,
     },
     validation: {
       allowedExtensions: ['jpeg', 'jpg', 'gif', 'png'],
+      sizeLimit: 100,
     },
   },
+});
+
+uploader.on('error', (id, name, errorReason) => {
+  alert(errorReason);
 });
 
 export default class MultiImageUploader extends Component {
