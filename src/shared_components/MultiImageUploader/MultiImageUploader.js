@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FineUploaderTraditional from 'fine-uploader-wrappers';
 import Gallery from 'react-fine-uploader';
-import { serverBaseURL } from 'libs/Utils';
+import { serverBaseURL } from 'libs/config';
 import 'react-fine-uploader/gallery/gallery.css';
 
 export default class MultiImageUploader extends Component {
@@ -30,10 +30,10 @@ export default class MultiImageUploader extends Component {
         },
         deleteFile: {
           enabled: true,
-          endpoint: `${serverBaseURL()}/media`,
+          endpoint: `${serverBaseURL}/media`,
         },
         request: {
-          endpoint: `${serverBaseURL()}/media`,
+          endpoint: `${serverBaseURL}/media`,
         },
         validation: {
           allowedExtensions: ['jpeg', 'jpg', 'gif', 'png'],
